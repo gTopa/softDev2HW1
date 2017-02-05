@@ -2,24 +2,22 @@ from pymongo import MongoClient
 server=MongoClient('149.89.150.100')
 db=server.mydb
 c=db.students
+import csv
 courses=open("courses.csv","r")
 peeps=open("peeps.csv","r")
-
-coursesstr=read(courses).split('\n')
-for thing in coursesstr:
-    thing=thing.split(',')
-
-peepsstr=read(peeps).split('\n')
+masterDict = {}
+peepsstr=csv.reader(peeps)
+peepsstr.next()
 for x in peepsstr:
-    x=x.split(',')
+    peep = {}
+    peep['name'] = x[0]
+    peep['age'] = x[1]
+    peep['id'] = x[2]
+    masterDict[peep['id']] = peep
 
-L=[]
-
-for student in peepsstr:
-    dic={}
-    dic['name']=student[0]
-    dic['age']=student[1]
-    dic['id']=student[2]
-    for c in coursesstr:
-        codes
-        if(student[2]==c[2]):
+coursesstr=csv.reader(courses)
+for course in coursesstr:
+    for people in masterDict:
+        if masterDict[people]['id'] == course[2]:
+            masterDict[course[2]][course[0]] = course[1]
+print masterDict
