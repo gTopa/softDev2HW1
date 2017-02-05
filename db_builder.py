@@ -21,3 +21,8 @@ for course in coursesstr:
         if masterDict[people]['id'] == course[2]:
             masterDict[course[2]][course[0]] = course[1]
 print masterDict
+
+for x in masterDict:
+    print masterDict[x]
+    c.insert_one(masterDict[x])
+
