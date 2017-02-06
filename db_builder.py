@@ -2,6 +2,8 @@ from pymongo import MongoClient
 server=MongoClient('149.89.150.100')
 db=server.mydb
 c=db.students
+c.delete_many({})
+
 import csv
 courses=open("courses.csv","r")
 peeps=open("peeps.csv","r")
