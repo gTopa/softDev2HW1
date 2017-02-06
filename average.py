@@ -17,5 +17,9 @@ def printStuff():
         print '\n'
         print x['id']
         print '\n'
+        grades = []
+        for i in x['courses']:
+            for name in i:
+                grades.append(i[name])
         print getAvg(x['grades'])
         print '\n\n'
